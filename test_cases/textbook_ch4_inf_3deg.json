@@ -1,0 +1,24 @@
+{
+  "_comment": "教材第四章 双胶合物镜 — 无穷远物距 | 半视场角3° | f'≈99.7mm",
+  "name": "教材第四章 双胶合物镜（无穷远·3°视场角）",
+  "description": "H-K9L / H-ZF2 双胶合。无穷远物距，半视场角3°",
+  "system_parameters": {
+    "object_distance": null,
+    "entrance_pupil_radius": 10.0,
+    "aperture_stop_index": 0,
+    "max_field_height": 5.226
+  },
+  "calculation_settings": {
+    "field_mode": "angle",
+    "field_value": 3.0,
+    "aperture_angle_deg": 5.0,
+    "field_fractions": [0.7],
+    "pupil_fractions": [0.7]
+  },
+  "surfaces": [
+    {"radius": 62.5,   "thickness": 4.0,  "glass": "H-K9L", "diameter": 25.0},
+    {"radius": -43.65, "thickness": 2.5,  "glass": "H-ZF2", "diameter": 25.0},
+    {"radius": -124.35,"thickness": 96.0, "glass": "Air",   "diameter": 25.0}
+  ],
+  "glass_library": "CDGM-ZEMAX202111.AGF"
+}

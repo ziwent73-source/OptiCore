@@ -1,0 +1,24 @@
+{
+  "_comment": "双胶合消色差透镜 — H-K9L / H-ZF2，入瞳 8mm (f/5.6)，全画幅 18mm 像高",
+  "name": "Cemented Achromatic Doublet — f'~45mm",
+  "description": "H-K9L / H-ZF2 双胶合消色差透镜，入瞳 8mm (f/5.6)，全画幅 18mm 像高",
+  "system_parameters": {
+    "object_distance": null,
+    "entrance_pupil_radius": 8.0,
+    "aperture_stop_index": 0,
+    "max_field_height": 18.0
+  },
+  "calculation_settings": {
+    "field_mode": "image_height",
+    "field_value": 18.0,
+    "aperture_angle_deg": 5.0,
+    "field_fractions": [0.7],
+    "pupil_fractions": [0.7]
+  },
+  "surfaces": [
+    {"radius": 22.5,  "thickness": 5.0,  "glass": "H-K9L", "diameter": 25.0},
+    {"radius": -21.0, "thickness": 2.0,  "glass": "H-ZF2", "diameter": 25.0},
+    {"radius": -100.0,"thickness": 42.0, "glass": "Air",   "diameter": 25.0}
+  ],
+  "glass_library": "CDGM-ZEMAX202111.AGF"
+}

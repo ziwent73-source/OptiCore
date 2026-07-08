@@ -1,0 +1,22 @@
+{
+  "_comment": "OptiCore 示例镜头 — 单透镜 f'≈45mm",
+  "name": "Demo Singlet — f'≈45mm",
+  "system_parameters": {
+    "object_distance": null,
+    "entrance_pupil_radius": 10.0,
+    "aperture_stop_index": 0,
+    "max_field_height": 18.0
+  },
+  "calculation_settings": {
+    "field_mode": "image_height",
+    "field_value": 18.0,
+    "aperture_angle_deg": 5.0,
+    "field_fractions": [0.7],
+    "pupil_fractions": [0.7]
+  },
+  "surfaces": [
+    {"radius": 42.0, "thickness": 6.0, "glass": "H-K9L", "diameter": 25.0},
+    {"radius": -50.0, "thickness": 42.0, "glass": "Air", "diameter": 25.0}
+  ],
+  "glass_library": "CDGM-ZEMAX202111.AGF"
+}

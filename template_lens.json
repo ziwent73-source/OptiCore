@@ -1,0 +1,53 @@
+{
+  "_comment": "OptiCore 计算配置文件模板 — 请根据实际镜头数据修改",
+  "name": "请输入镜头名称，如：双胶合消色差镜头",
+  "system_parameters": {
+    "_comment": "系统物理参数",
+    "object_distance": null,
+    "_comment_object_distance": "物距(mm)，null/inf=无限远，正数=有限距(实物在左为负时取绝对值)",
+    "entrance_pupil_radius": 10.0,
+    "_comment_entrance_pupil_radius": "入瞳半径(mm)，必填",
+    "aperture_stop_index": 0,
+    "_comment_aperture_stop_index": "光阑所在面索引，0表示第一面",
+    "max_field_height": 12.0,
+    "_comment_max_field_height": "最大视场像高(mm)，全画幅取12"
+  },
+  "calculation_settings": {
+    "_comment": "本次计算的选择（波长固定为 d, F, C 三光全选，无需配置）",
+    "field_fractions": [
+      0.7
+    ],
+    "_comment_field_fractions": "需要计算的中间视场分数，0(轴上)和1(全视场)自动补全",
+    "field_mode": "image_height",
+    "_comment_field_mode": "视场输入模式：angle(度) / object_height(mm) / image_height(mm)",
+    "field_value": 12.0,
+    "_comment_field_value": "视场数值，与 field_mode 对应",
+    "aperture_angle_deg": 5.0,
+    "_comment_aperture_angle": "孔径角(度)，程序自动换算入瞳半径",
+    "pupil_fractions": [
+      0.7
+    ],
+    "_comment_pupil_fractions": "需计算的中间孔径分数，0(主光线)和1(全孔径)自动补全"
+  },
+  "surfaces": [
+    {
+      "_comment": "按顺序填写每个光学面，从第一面到像面",
+      "radius": 42.0,
+      "_comment_radius": "曲率半径(mm)，凸面(R>0)为正值，凹面(R<0)为负值",
+      "thickness": 6.0,
+      "_comment_thickness": "到下一面的厚度(mm)，最后一面填像面距离",
+      "glass": "H-K9L",
+      "_comment_glass": "玻璃名称，如 H-K9L、H-ZF2、Air",
+      "diameter": 25.0,
+      "_comment_diameter": "通光半口径(mm)"
+    },
+    {
+      "radius": -50.0,
+      "thickness": 42.0,
+      "glass": "Air",
+      "diameter": 25.0
+    }
+  ],
+  "glass_library": "CDGM-ZEMAX202111.AGF",
+  "_comment_glass_library": "AGF玻璃库文件名，如无法获取请使用内置库"
+}
