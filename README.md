@@ -5,13 +5,13 @@
 
 ## 功能
 
+- **两种输入方式**：上传 JSON 文件（传统方式）/ 页面上直接填写表单（新增），调用同一计算引擎
 - **近轴计算**：焦距 f'、像距 l'、主面位置 lH'、出瞳距 lp'、近轴像高、场曲、像散
 - **实际光线追迹**：逐面 Snell 折射（向量形式），固定 d / F / C 三波长
 - **像差分析**：球差、位置色差、子午彗差、实际像高、畸变（绝对/相对）、倍率色差
 - **细光束场曲**：Coddington 方程计算子午/弧矢场曲及像散
 - **动态分数**：视场分数和孔径分数由用户指定中间值，0 和 1.0 自动补全
-- **文件存取**：v2.0 JSON 格式镜头文件上传，CSV 结果下载（长格式）
-- **可视化**：光线追迹图（分视场着色、镜片填充、物面/像面标注）
+- **数据导出**：CSV 结果下载（长格式，8 位小数）
 
 ## 快速开始
 
@@ -34,17 +34,26 @@ streamlit run app.py
 
 ### 使用步骤
 
-1. 左侧上传镜头 JSON 文件，或点击 **「使用示例镜头」**
-2. 展开 **「入射光线初始坐标」** 查看生成的光线 (L, U)
-3. 点击 **「开始计算」** 进行光线追迹
-4. 查看结果：KPI 卡片 + 按参数分组详细表格 + 追迹路径表
-5. 下载 CSV 文件（`参数,波长,视场,孔径,数值` 长格式，8 位小数）
+**📂 JSON 文件模式：**
+1. 顶部选择「📂 上传 JSON 文件」
+2. 左侧上传 `lens.json`，或点击 **「示例镜头」** 加载演示数据
+3. 点击 **「开始计算」** 执行光线追迹
+4. 查看 KPI 卡片 + 分组详细表格 + 追迹路径表 + 下载 CSV
+
+**✏️ 手动填写模式：**
+1. 顶部选择「✏️ 手动填写参数」
+2. 在表单中填写系统参数、计算设置、光学面数据
+3. 可动态添加/删除光学面，每面独立填写曲率半径、厚度、玻璃、口径
+4. 点击 **「开始计算」** → 结果展示与 JSON 模式完全一致
+5. 点 **「重新填写」** 可返回编辑
 
 ## 项目结构
 
 ```
 OptiCore/
-├── app.py                        # Streamlit Web 界面
+├── app.py                        # Streamlit Web 界面（含表单输入 + JSON 上传）
+├── run.bat                       # 一键环境检测 + 依赖安装（首次使用）
+├── launch.bat                    # 一键启动程序（日常使用）
 ├── lens.json                     # 示例镜头（单透镜 f'≈45mm）
 ├── template_lens.json            # JSON 配置模板（v2.0 格式）
 ├── requirements.txt              # 依赖：streamlit, numpy, pandas, matplotlib
@@ -55,12 +64,12 @@ OptiCore/
 ├── engine/                       # 光学计算引擎
 │   ├── data_model.py             # Lens, Surface, Ray, Material 数据结构
 │   ├── lens_loader.py            # JSON → Lens（v2.0 + 旧格式兼容）
+│   ├── glass_loader.py           # AGF 玻璃库加载
 │   ├── ray_generator.py          # ⭐ 入瞳光线采样（动态视场/孔径）
 │   ├── paraxial.py               # 近轴计算 + Coddington 场曲/像散
 │   ├── ray_tracer.py             # 向量 Snell 实际追迹
 │   ├── aberration.py             # 像差计算（动态分数）
-│   ├── file_manager.py           # CSV 导出 + 分组表格（长格式）
-│   └── glass_loader.py           # AGF 玻璃库加载
+│   └── file_manager.py           # CSV 导出 + 分组表格（长格式）
 ├── test_cases/                   # 测试镜头
 │   ├── README.md
 │   ├── cemented_doublet.json                # 双胶合 f'≈45mm
